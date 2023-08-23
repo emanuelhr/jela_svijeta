@@ -17,9 +17,9 @@ class CustomPaginator extends LengthAwarePaginator
             ],
             'data'=>$this->items->toArray(),            
             'links'=>[
-                'prev'=>$this->previousPageUrl(),
-                'next'=>$this->nextPageUrl(),
-                'self'=>$this->url($this->currentPage())
+                'prev'=>$this->withQueryString()->previousPageUrl(),
+                'next'=>$this->withQueryString()->nextPageUrl(),
+                'self'=>$this->url($this->withQueryString()->currentPage())
             ]
         ];
 

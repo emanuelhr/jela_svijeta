@@ -32,6 +32,7 @@ class MealResource extends JsonResource
             'title'=>$this->title,
             'descriptio'=>$this->description,
             'status'=>$this->status,
+            'created_at'=>$this->created_at,
             'category'=>CategoryResource::collection($this->whenLoaded('categories')),
             'tags'=>CategoryResource::collection($this->whenLoaded('tags')),
             'ingredients'=>CategoryResource::collection($this->whenLoaded('ingredients'))               

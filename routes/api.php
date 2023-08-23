@@ -2,6 +2,7 @@
 
 //use App\Http\Controllers\MealController;
 use App\Http\Controllers\Api\MealController;
+use App\Http\Middleware\ValidateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

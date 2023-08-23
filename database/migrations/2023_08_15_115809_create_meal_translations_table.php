@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meals', function (Blueprint $table) {
+        Schema::create('meal_translations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('meal_id');
+            $table->string('locale')->index();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('status');
-            //$table->bigInteger('created_at')->default(time())->unsigned()->nullable();
-            //$table->bigInteger('updated_at')->default(time())->unsigned()->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+            $table->unique(['meal_id','locale']);
+            $table->foreign('meal_id')->references('id')->on('meals')->onDelete('cascade');
+            
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meals');
+        Schema::dropIfExists('meal_translations');
     }
 };
