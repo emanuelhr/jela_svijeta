@@ -46,7 +46,6 @@ class Validators
                 throw new Exception("{$key} is not supported parameter",1);
             }
         }
-
         //Validate category parameter
         if(!(is_numeric($category) || $category==='NULL' || $category==='!NULL' || is_null($category)))
         {

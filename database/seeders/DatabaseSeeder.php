@@ -16,7 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-       
+
+        Tag::truncate();
+        Ingredient::truncate();
+        Category::truncate();
+        Meal::truncate();
+
+
+
         Tag::factory(10)->create();
         Ingredient::factory(10)->create();
         Category::factory(10)->create();

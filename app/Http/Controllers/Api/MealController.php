@@ -33,15 +33,16 @@ class MealController extends Controller
         $category=$request->category;
         $with=explode(',',$request->with);
                         
+        $query=Meal::query()->withThrashed($diff_time!==null);
+
         
-        $query=Meal::withTrashed($diff_time==null ? false : true)->newQuery();
 
         //Thrashed
         if (!isNull($diff_time)) {
             $query=$query
             ->where('deleted_at','>',$diff_time,'or')
             ->where('deleted_at','=',NULL,'and')
-            ->where('created_at','>',$diff_time)
+            ->where('created_at','>',$diff_time,'and')
             ->where('modified_at','>',$diff_time);
         }       
         
@@ -67,6 +68,7 @@ class MealController extends Controller
        
         $meals=$query->paginate($pageSize);
          return MealResource::collection($meals);
+        
        
 
     }
